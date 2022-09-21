@@ -6,7 +6,7 @@ const sauceCtrl = require("../controllers/sauce");
 
 router.post("/", auth, multer, sauceCtrl.createSauce);
 
-router.post("/:id", auth, sauceCtrl.LikeOrDislikeSauce);
+router.post("/:id/like", auth, sauceCtrl.LikeOrDislikeSauce);
 
 router.put("/:id", auth, multer, sauceCtrl.modifySauce);
 

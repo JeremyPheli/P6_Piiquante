@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv").config();
 
 const sauceRoutes = require("./routes/sauce");
 const userRoutes = require("./routes/user");
@@ -8,13 +9,10 @@ const userRoutes = require("./routes/user");
 const path = require("path");
 
 mongoose
-  .connect(
-    "mongodb+srv://Jeremy:AM3nkVXxNnE1LT14@cluster0.yqascfy.mongodb.net/?ssl=true&authSource=admin",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.MONGO, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("Connexion à MongoDB réussie !"))
   .catch(() => console.log("Connexion à MongoDB échouée !"));
 
